@@ -1,1 +1,1 @@
-# DziennikTreningowy
+# Dziennik Treningowy API 
