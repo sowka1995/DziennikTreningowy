@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DziennikTreningowy", "DziennikTreningowy\DziennikTreningowy.csproj", "{CC3379C0-A126-4747-B41D-9CD2DB50E46C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DziennikTreningowy", "DziennikTreningowy\DziennikTreningowy.csproj", "{CC3379C0-A126-4747-B41D-9CD2DB50E46C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DziennikTreningowy.Core", "DziennikTreningowy.Core\DziennikTreningowy.Core.csproj", "{A797455B-7230-44D6-8713-81BBA94E23F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DziennikTreningowy.Infrastructure", "DziennikTreningowy.Infrastructure\DziennikTreningowy.Infrastructure.csproj", "{D652296C-716E-4C2A-ACAF-5477A7EF4365}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{CC3379C0-A126-4747-B41D-9CD2DB50E46C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC3379C0-A126-4747-B41D-9CD2DB50E46C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC3379C0-A126-4747-B41D-9CD2DB50E46C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A797455B-7230-44D6-8713-81BBA94E23F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A797455B-7230-44D6-8713-81BBA94E23F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A797455B-7230-44D6-8713-81BBA94E23F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A797455B-7230-44D6-8713-81BBA94E23F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D652296C-716E-4C2A-ACAF-5477A7EF4365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D652296C-716E-4C2A-ACAF-5477A7EF4365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D652296C-716E-4C2A-ACAF-5477A7EF4365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D652296C-716E-4C2A-ACAF-5477A7EF4365}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
