@@ -13,6 +13,8 @@ namespace DziennikTreningowy.Core.Models
 
         public double Weight { get; set; }
 
-        public virtual Exercise Exercise { get; set; }
+        public int ExerciseId { get; set; }
+
+        public Exercise Exercise { get; set; }
     }
 }

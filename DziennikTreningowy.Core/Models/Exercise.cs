@@ -14,8 +14,8 @@ namespace DziennikTreningowy.Core.Models
         [MaxLength(1000)]
         public string Description { get; set; }
 
-        public virtual ICollection<UserExercise> UserExercises { get; set; }
+        public ICollection<UserExercise> UserExercises { get; set; }
 
-        public virtual ICollection<WorkoutTemplateExercise> WorkoutTemplateExercises { get; set; }
+        public ICollection<WorkoutTemplateExercise> WorkoutTemplateExercises { get; set; }
     }
 }

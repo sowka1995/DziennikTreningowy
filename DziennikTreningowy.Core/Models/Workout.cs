@@ -14,6 +14,6 @@ namespace DziennikTreningowy.Core.Models
         [MaxLength(255)]
         public string Location { get; set; }
 
-        public virtual ICollection<WorkoutExercise> WorkoutExercises { get; set; }
+        public ICollection<WorkoutExercise> WorkoutExercises { get; set; }
     }
 }
