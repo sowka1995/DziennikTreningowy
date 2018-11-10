@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace DziennikTreningowy.Controllers
 {
-    [Authorize("Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthorizationController : ControllerBase
@@ -26,7 +25,7 @@ namespace DziennikTreningowy.Controllers
         }
 
         /// <summary>
-        /// Asynchroniczna metoda logująca.
+        /// Logowanie do systemu
         /// </summary>
         /// <param name="userLoginDto">Dane logowania</param>
         /// <returns>Wygenerowany token JWT</returns>
@@ -46,11 +45,9 @@ namespace DziennikTreningowy.Controllers
             {
                 return BadRequest("Sign in failed!");
             }
-            var user = await this._userManager.FindByNameAsync(userLoginDto.Username);
-            string userToken = this._oAuthService.GetUserAuthToken(userLoginDto.Username, user.Id.ToString());
+            var user = await _userManager.FindByNameAsync(userLoginDto.Username);
+            string userToken = _oAuthService.GetUserAuthToken(userLoginDto.Username, user.Id.ToString());
             return new JsonResult(userToken);
         }
-
-
     }
 }

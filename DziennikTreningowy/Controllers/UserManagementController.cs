@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DziennikTreningowy.Controllers
 {
-    [Authorize("Bearer")]
     [Route("api/user")]
     [ApiController]
     public class UserManagementController : ControllerBase
@@ -18,8 +17,12 @@ namespace DziennikTreningowy.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
-        [Route("Information")]
+        /// <summary>
+        /// Zwraca informacje o zalogowanym użytkowniku
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="401">Wymagana autoryzacja</response>
+        [HttpGet, Route("Information"), Authorize("Bearer")]
         public ActionResult<UserDTO> Information()
         {
             var currentUserId = User.GetUserId();

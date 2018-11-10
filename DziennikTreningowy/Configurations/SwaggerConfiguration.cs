@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using DziennikTreningowy.Configurations.OperationFilters;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -38,6 +39,9 @@ namespace DziennikTreningowy.Configurations
                 c.DescribeAllEnumsAsStrings();
                 c.IgnoreObsoleteProperties();
                 c.IncludeXmlComments(CreateXmlCommentsPath());
+
+                // Operation Filters
+                c.OperationFilter<AddAuthorizationHeaderParameterOperationFilter>();
             });
         }
 
