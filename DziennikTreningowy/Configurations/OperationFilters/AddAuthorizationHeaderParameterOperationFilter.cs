@@ -22,7 +22,8 @@ namespace DziennikTreningowy.Configurations.OperationFilters
                     In = "header",
                     Description = "JWT Bearer Token",
                     Type = "string",
-                    Required = true
+                    Required = true,
+                    Default = "Bearer en..."
                 });
             }
         }
