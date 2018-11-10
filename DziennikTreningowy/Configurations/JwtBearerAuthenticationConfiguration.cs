@@ -25,7 +25,7 @@ namespace DziennikTreningowy.Configurations
             {
                 Audience = configuration["Jwt:Audience"],
                 Issuer = configuration["Jwt:Issuer"],
-                LifeSpan = TimeSpan.FromMinutes(Convert.ToDouble(configuration["Jwt:TokenLifespan"])),
+                LifeSpan = TimeSpan.FromDays(Convert.ToDouble(configuration["Jwt:TokenLifespan"])),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"])),
                     SecurityAlgorithms.HmacSha512Signature)
