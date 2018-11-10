@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DziennikTreningowy.Configurations;
 using DziennikTreningowy.Infrastructure.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ namespace DziennikTreningowy
             WorkoutDiaryDbContext.ConnectionString = this.Configuration.GetConnectionString("Default");
             services.AddDbContext<WorkoutDiaryDbContext>(options =>
                 options.UseSqlServer(this.Configuration.GetConnectionString("Default")));
+            SwaggerConfiguration.RegisterService(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -53,6 +55,8 @@ namespace DziennikTreningowy
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
+            SwaggerConfiguration.RegisterUi(app);
         }
     }
 }
