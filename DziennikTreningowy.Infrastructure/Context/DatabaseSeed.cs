@@ -19,16 +19,16 @@ namespace DziennikTreningowy.Infrastructure.Context
                 User user = new User()
                 {
                     // Required minimum
-                    Email = "workout@example.com",
+                    Email = "arnold@workout.com",
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    UserName = "workout@example.com",
+                    UserName = "arnold@workout.com",
 
                     // Additional
-                    FirstName = "Korki",
-                    LastName = "NaJuż"
+                    FirstName = "Arnold",
+                    LastName = "Schwarzenegger"
                 };
 
-                var result = userManager.CreateAsync(user, "Knj1234!");
+                var result = userManager.CreateAsync(user, "Arnold1234!");
                 result.Wait();
                 Console.WriteLine(result.Result.Succeeded);
             }

@@ -7,7 +7,9 @@ using DziennikTreningowy.Configurations;
 using DziennikTreningowy.Core.Interfaces;
 using DziennikTreningowy.Core.Models;
 using DziennikTreningowy.Infrastructure.Context;
+using DziennikTreningowy.Infrastructure.Repositories;
 using DziennikTreningowy.Infrastructure.Services.Auth;
+using DziennikTreningowy.Infrastructure.Services.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -47,7 +49,10 @@ namespace DziennikTreningowy
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddAutoMapper();
+
             services.AddScoped<IOAuthService, OAuthService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

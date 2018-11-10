@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DziennikTreningowy.Core\DziennikTreningowy.Core.csproj" />
+    <ProjectReference Include="..\DziennikTreningowy.Helpers\DziennikTreningowy.Helpers.csproj" />
     <ProjectReference Include="..\DziennikTreningowy.Infrastructure\DziennikTreningowy.Infrastructure.csproj" />
   </ItemGroup>
 

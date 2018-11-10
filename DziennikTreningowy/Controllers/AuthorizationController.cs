@@ -1,6 +1,6 @@
 ﻿using DziennikTreningowy.Core.Interfaces;
 using DziennikTreningowy.Core.Models;
-using DziennikTreningowy.DTO;
+using DziennikTreningowy.Core.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

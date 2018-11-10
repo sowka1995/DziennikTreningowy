@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DziennikTreningowy.DTO
+namespace DziennikTreningowy.Core.DTO
 {
     public class UserLoginDTO
     {
