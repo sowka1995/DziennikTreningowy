@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DziennikTreningowy.Configurations;
+using DziennikTreningowy.Core.Interfaces;
+using DziennikTreningowy.Core.Models;
 using DziennikTreningowy.Infrastructure.Context;
+using DziennikTreningowy.Infrastructure.Services.Auth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,9 +35,18 @@ namespace DziennikTreningowy
             WorkoutDiaryDbContext.ConnectionString = this.Configuration.GetConnectionString("Default");
             services.AddDbContext<WorkoutDiaryDbContext>(options =>
                 options.UseSqlServer(this.Configuration.GetConnectionString("Default")));
+
             SwaggerConfiguration.RegisterService(services);
 
+            services.AddIdentity<User, IdentityRole<int>>()
+                    .AddEntityFrameworkStores<WorkoutDiaryDbContext>()
+                    .AddDefaultTokenProviders();
+
+            JwtBearerAuthenticationConfiguration.RegisterBearerPolicy(services, Configuration);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<IOAuthService, OAuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +60,7 @@ namespace DziennikTreningowy
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                DatabaseSeed.Initialize(app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope().ServiceProvider);
             }
             else
             {
@@ -54,6 +68,7 @@ namespace DziennikTreningowy
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
             app.UseSwagger();
             SwaggerConfiguration.RegisterUi(app);

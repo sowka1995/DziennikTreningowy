@@ -1,9 +1,11 @@
 ﻿using DziennikTreningowy.Core.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DziennikTreningowy.Infrastructure.Context
 {
-    public class WorkoutDiaryDbContext : DbContext
+    public class WorkoutDiaryDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public static string ConnectionString { get; set; }
 
@@ -26,6 +28,14 @@ namespace DziennikTreningowy.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Exercise>().ToTable("Exercises");
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<Workout>().ToTable("Workouts");
+            modelBuilder.Entity<WorkoutExercise>().ToTable("WorkoutExercises");
+            modelBuilder.Entity<WorkoutTemplate>().ToTable("WorkoutTemplates");
+
             modelBuilder.Entity<UserExercise>()
                 .HasKey(ue => new { ue.UserId, ue.ExerciseId });
 

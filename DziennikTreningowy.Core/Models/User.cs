@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DziennikTreningowy.Core.Models
 {
-    public class User
+    public class User : IdentityUser<int>
     {
         [Key]
-        public int UserId { get; set; }
+        public override int Id { get; set; }
 
         [MaxLength(255)]
         public string FirstName { get; set; }
@@ -15,7 +16,7 @@ namespace DziennikTreningowy.Core.Models
         public string LastName { get; set; }
 
         [MaxLength(255)]
-        public string Email { get; set; }
+        public override string Email { get; set; }
 
         [MaxLength(1000)]
         public byte[] Avatar { get; set; }
