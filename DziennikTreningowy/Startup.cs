@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using DziennikTreningowy.Configurations;
 using DziennikTreningowy.Core.Interfaces;
 using DziennikTreningowy.Core.Models;
@@ -45,7 +46,7 @@ namespace DziennikTreningowy
             JwtBearerAuthenticationConfiguration.RegisterBearerPolicy(services, Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            services.AddAutoMapper();
             services.AddScoped<IOAuthService, OAuthService>();
         }
 
