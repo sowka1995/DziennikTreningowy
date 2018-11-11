@@ -23,7 +23,9 @@ namespace DziennikTreningowy.Infrastructure.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConnectionString);
+            optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseSqlServer(ConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -61,7 +63,6 @@ namespace DziennikTreningowy.Infrastructure.Context
                 .HasOne(wte => wte.Exercise)
                 .WithMany(e => e.WorkoutTemplateExercises)
                 .HasForeignKey(wte => wte.ExerciseId);
-
         }
 
         public new DbSet<User> Users { get; set; }
