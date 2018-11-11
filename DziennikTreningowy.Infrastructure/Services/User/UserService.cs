@@ -1,6 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using DziennikTreningowy.Core.DTO;
 using DziennikTreningowy.Core.Interfaces;
+using DziennikTreningowy.Core.Models;
 
 namespace DziennikTreningowy.Infrastructure.Services.User
 {
@@ -15,9 +18,16 @@ namespace DziennikTreningowy.Infrastructure.Services.User
             _mapper = mapper;
         }
 
-        public UserDTO GetUserInfo(int id)
+        public IEnumerable<ExerciseDTO> GetUserExercises(int userId)
         {
-            var user = _userRepository.Get(id);
+            var user = _userRepository.Get(userId);
+            var exercises = user.UserExercises.Select(x => x.Exercise);
+            return _mapper.Map<IEnumerable<ExerciseDTO>>(exercises);
+        }
+
+        public UserDTO GetUserInfo(int userId)
+        {
+            var user = _userRepository.Get(userId);
             return _mapper.Map<UserDTO>(user);
         }
     }

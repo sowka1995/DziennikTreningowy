@@ -30,6 +30,19 @@ namespace DziennikTreningowy.Infrastructure.Context
 
                 var result = userManager.CreateAsync(user, "Arnold1234!");
                 result.Wait();
+
+                var exercise = new Exercise() { Name = "Arnoldki", Description = "Ćwiczenie na barki" };
+
+                var userExercise = new UserExercise();
+
+                userExercise.Exercise = exercise;
+                userExercise.User = user;
+
+                user.UserExercises.Add(userExercise);
+
+                dbContext.Exercises.Add(exercise);
+                dbContext.SaveChanges();
+
                 Console.WriteLine(result.Result.Succeeded);
             }
 
