@@ -15,6 +15,6 @@ namespace DziennikTreningowy.Core.Models
 
         public int ExerciseId { get; set; }
 
-        public Exercise Exercise { get; set; }
+        public virtual Exercise Exercise { get; set; }
     }
 }

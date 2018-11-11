@@ -104,12 +104,12 @@ namespace DziennikTreningowy.Infrastructure.Repositories
             return _dbSet.SingleOrDefault(predicate);
         }
 
-        public virtual ICollection<T> FindAll(Expression<Func<T, bool>> predicate)
+        public virtual IEnumerable<T> FindAll(Expression<Func<T, bool>> predicate)
         {
             return _dbSet.Where(predicate).ToList();
         }
 
-        public virtual async Task<ICollection<T>> FindAllAsync(Expression<Func<T, bool>> predicate)
+        public virtual async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate)
         {
             return await _dbSet.Where(predicate).ToListAsync();
         }
@@ -124,7 +124,7 @@ namespace DziennikTreningowy.Infrastructure.Repositories
             return _dbSet.Where(predicate);
         }
 
-        public virtual async Task<ICollection<T>> FindByAsync(Expression<Func<T, bool>> predicate)
+        public virtual async Task<IEnumerable<T>> FindByAsync(Expression<Func<T, bool>> predicate)
         {
             return await _dbSet.Where(predicate).ToListAsync();
         }
@@ -139,7 +139,7 @@ namespace DziennikTreningowy.Infrastructure.Repositories
             return _dbSet;
         }
 
-        public virtual async Task<ICollection<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }

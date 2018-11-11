@@ -5,12 +5,17 @@ namespace DziennikTreningowy.Core.Models
 {
     public class WorkoutTemplate
     {
+        public WorkoutTemplate()
+        {
+            WorkoutTemplateExercises = new HashSet<WorkoutTemplateExercise>();
+        }
+
         [Key]
         public int WorkoutTemplateId { get; set; }
 
         [MaxLength(255)]
         public string Name { get; set; }
 
-        public ICollection<WorkoutTemplateExercise> WorkoutTemplateExercises { get; set; }
+        public virtual ICollection<WorkoutTemplateExercise> WorkoutTemplateExercises { get; set; }
     }
 }

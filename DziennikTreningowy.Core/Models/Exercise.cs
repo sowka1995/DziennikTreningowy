@@ -5,6 +5,12 @@ namespace DziennikTreningowy.Core.Models
 {
     public class Exercise
     {
+        public Exercise()
+        {
+            UserExercises = new HashSet<UserExercise>();
+            WorkoutTemplateExercises = new HashSet<WorkoutTemplateExercise>();
+        }
+
         [Key]
         public int ExerciseId { get; set; }
 
@@ -14,8 +20,8 @@ namespace DziennikTreningowy.Core.Models
         [MaxLength(1000)]
         public string Description { get; set; }
 
-        public ICollection<UserExercise> UserExercises { get; set; }
+        public virtual ICollection<UserExercise> UserExercises { get; set; }
 
-        public ICollection<WorkoutTemplateExercise> WorkoutTemplateExercises { get; set; }
+        public virtual ICollection<WorkoutTemplateExercise> WorkoutTemplateExercises { get; set; }
     }
 }
