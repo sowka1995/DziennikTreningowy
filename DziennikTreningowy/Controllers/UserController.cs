@@ -25,7 +25,7 @@ namespace DziennikTreningowy.Controllers
         /// <returns></returns>
         /// <response code="401">Użytkownik niezalogowany</response>
         [HttpGet, Route("Informations"), Authorize("Bearer")]
-        public ActionResult<UserDTO> GetInformation()
+        public ActionResult<UserDTO> GetUserInformation()
         {
             var currentUserId = User.GetUserId();
 
@@ -38,11 +38,19 @@ namespace DziennikTreningowy.Controllers
         /// <returns></returns>
         /// <response code="401">Użytkownik niezalogowany</response>
         [HttpGet, Route("Exercises"), Authorize("Bearer")]
-        public ActionResult<IEnumerable<ExerciseDTO>> GetAllExercises()
+        public ActionResult<IEnumerable<ExerciseDTO>> GetUserAllExercises()
         {
             var currentUserId = User.GetUserId();
 
             return _userService.GetUserExercises(currentUserId.Value).ToList();
+        }
+
+        [HttpGet, Route("WorkoutTemplates"), Authorize("Bearer")]
+        public ActionResult<IEnumerable<WorkoutTemplateDTO>> GetUserAllWorkoutTemplates()
+        {
+            var currentUserId = User.GetUserId();
+
+            return _userService.GetUserWorkoutTemplates(currentUserId.Value).ToList();
         }
     }
 }

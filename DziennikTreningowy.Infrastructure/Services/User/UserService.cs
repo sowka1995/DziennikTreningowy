@@ -30,5 +30,12 @@ namespace DziennikTreningowy.Infrastructure.Services.User
             var user = _userRepository.Get(userId);
             return _mapper.Map<UserDTO>(user);
         }
+
+        public IEnumerable<WorkoutTemplateDTO> GetUserWorkoutTemplates(int userId)
+        {
+            var user = _userRepository.Get(userId);
+            var templates = user.WorkoutTemplates;
+            return _mapper.Map<IEnumerable<WorkoutTemplateDTO>>(templates);
+        }
     }
 }
