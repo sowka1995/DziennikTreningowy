@@ -7,5 +7,6 @@ namespace DziennikTreningowy.Core.Interfaces
     {
         UserDTO GetUserInfo(int userId);
         IEnumerable<ExerciseDTO> GetUserExercises(int userId);
+        IEnumerable<WorkoutTemplateDTO> GetUserWorkoutTemplates(int userId);
     }
 }
