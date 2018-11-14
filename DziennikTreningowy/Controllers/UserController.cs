@@ -23,7 +23,10 @@ namespace DziennikTreningowy.Controllers
         /// Zwraca informacje o zalogowanym użytkowniku
         /// </summary>
         /// <returns></returns>
+        /// <response code="200">Informacje o użytkowniku</response>
         /// <response code="401">Użytkownik niezalogowany</response>
+        /// <response code="500">Wewnętrzny błąd serwera</response>
+        [ProducesResponseType(typeof(UserDTO), 200), ProducesResponseType(401)]
         [HttpGet, Route("Informations"), Authorize("Bearer")]
         public ActionResult<UserDTO> GetUserInformation()
         {
@@ -36,7 +39,10 @@ namespace DziennikTreningowy.Controllers
         /// Zwraca listę wszystkich ćwiczeń zalogowanego użytkownika
         /// </summary>
         /// <returns></returns>
+        /// <response code="200">Lista ćwiczeń</response>
         /// <response code="401">Użytkownik niezalogowany</response>
+        /// <response code="500">Wewnętrzny błąd serwera</response>
+        [ProducesResponseType(typeof(ExerciseDTO), 200), ProducesResponseType(401)]
         [HttpGet, Route("Exercises"), Authorize("Bearer")]
         public ActionResult<IEnumerable<ExerciseDTO>> GetUserAllExercises()
         {
@@ -45,6 +51,14 @@ namespace DziennikTreningowy.Controllers
             return _userService.GetUserExercises(currentUserId.Value).ToList();
         }
 
+        /// <summary>
+        /// Zwraca listę wszystkich szablonów treningowych zalogowanego użytkownika
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Lista szablonów treningowych</response>
+        /// <response code="401">Użytkownik niezalogowany</response>
+        /// <response code="500">Wewnętrzny błąd serwera</response>
+        [ProducesResponseType(typeof(WorkoutTemplateDTO), 200), ProducesResponseType(401)]
         [HttpGet, Route("WorkoutTemplates"), Authorize("Bearer")]
         public ActionResult<IEnumerable<WorkoutTemplateDTO>> GetUserAllWorkoutTemplates()
         {

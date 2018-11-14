@@ -8,7 +8,8 @@ namespace DziennikTreningowy.Core.Mappings
     {
         public ExerciseMappings()
         {
-            CreateMap<Exercise, ExerciseDTO>().ReverseMap();
+            CreateMap<Exercise, ExerciseDTO>()
+                .ForMember(x => x.Id, opts => opts.MapFrom(i => i.ExerciseId));
         }
     }
 }
