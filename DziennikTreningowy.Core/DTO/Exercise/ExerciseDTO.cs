@@ -6,7 +6,7 @@ namespace DziennikTreningowy.Core.DTO
         /// <summary>
         /// Id ćwiczenia
         /// </summary>
-        public int ExerciseId { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Nazwa ćwiczenia

@@ -8,7 +8,8 @@ namespace DziennikTreningowy.Core.Mappings
     {
         public WorkoutTemplateMappings()
         {
-            CreateMap<WorkoutTemplate, WorkoutTemplateDTO>();
+            CreateMap<WorkoutTemplate, WorkoutTemplateDTO>()
+                .ForMember(x => x.Id, opts => opts.MapFrom(i => i.WorkoutTemplateId));
         }
     }
 }

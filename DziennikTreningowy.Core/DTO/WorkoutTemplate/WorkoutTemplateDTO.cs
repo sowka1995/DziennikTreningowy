@@ -2,7 +2,7 @@
 {
     public class WorkoutTemplateDTO
     {
-        public int WorkoutTemplateId { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
     }

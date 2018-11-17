@@ -25,17 +25,17 @@ namespace DziennikTreningowy.Controllers
         }
 
         /// <summary>
-        /// Logowanie do systemu
+        /// Loguje użytkownika w systemie
         /// </summary>
         /// <param name="userLoginDto">Dane logowania</param>
         /// <returns>Wygenerowany token JWT</returns>
         /// <response code="200">Pomyślna autoryzacja użytkownika - zwraca wygenerowany JWT Token</response>
         /// <response code="400">Logowanie nie powiodło się - niepoprawne dane logowania</response>
         /// <response code="403">Konto użytkownika jest zablokowane</response>
+        /// <response code="500">Wewnętrzny błąd serwera</response>
         [HttpPost("Login"), AllowAnonymous]
         public async Task<IActionResult> LoginUserAsync([Required] UserLoginDTO userLoginDto)
         {
-
             var result = await _signInManager.PasswordSignInAsync(userLoginDto.Username, userLoginDto.Password, false, false);
             if (result.IsLockedOut)
             {
