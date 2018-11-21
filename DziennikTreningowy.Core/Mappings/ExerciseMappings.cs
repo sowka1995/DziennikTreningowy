@@ -10,6 +10,12 @@ namespace DziennikTreningowy.Core.Mappings
         {
             CreateMap<Exercise, ExerciseDTO>()
                 .ForMember(x => x.Id, opts => opts.MapFrom(i => i.ExerciseId));
+
+            CreateMap<WorkoutExercise, WorkoutExerciseDTO>()
+                .ForMember(x => x.Id, opts => opts.MapFrom(i => i.WorkoutExerciseId));
+
+            CreateMap<WorkoutExercise, ExerciseSetDTO>()
+                .ForMember(x => x.Id, opts => opts.MapFrom(i => i.WorkoutExerciseId));
         }
     }
 }

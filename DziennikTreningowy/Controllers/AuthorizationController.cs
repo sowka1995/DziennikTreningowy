@@ -47,7 +47,7 @@ namespace DziennikTreningowy.Controllers
             }
             var user = await _userManager.FindByNameAsync(userLoginDto.Username);
             string userToken = _oAuthService.GetUserAuthToken(userLoginDto.Username, user.Id.ToString());
-            return new JsonResult(userToken);
+            return new JsonResult(new { token = userToken });
         }
     }
 }
