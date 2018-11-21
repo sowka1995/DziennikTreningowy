@@ -52,6 +52,18 @@ namespace DziennikTreningowy.Controllers
         }
 
         /// <summary>
+        /// Zwraca listę wszystkich treningów użytkownika
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, Route("Workouts"), Authorize("Bearer")]
+        public ActionResult<IEnumerable<WorkoutDTO>> GetUserAllWorkouts()
+        {
+            var currentUserId = User.GetUserId();
+
+            return _userService.GetUserWorkouts(currentUserId.Value).ToList();
+        }
+
+        /// <summary>
         /// Zwraca listę wszystkich szablonów treningowych zalogowanego użytkownika
         /// </summary>
         /// <returns></returns>
