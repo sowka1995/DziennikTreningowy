@@ -1,4 +1,4 @@
-﻿using DziennikTreningowy.Infrastructure.Services.Auth;
+﻿using DziennikTreningowy.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
