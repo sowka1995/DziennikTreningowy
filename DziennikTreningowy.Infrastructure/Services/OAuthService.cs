@@ -4,7 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
 
-namespace DziennikTreningowy.Infrastructure.Services.Auth
+namespace DziennikTreningowy.Infrastructure.Services
 {
     public class OAuthService : IOAuthService
     {

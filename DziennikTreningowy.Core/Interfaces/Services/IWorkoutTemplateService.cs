@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace DziennikTreningowy.Core.Interfaces
 {
-    public interface IUserService
+    public interface IWorkoutTemplateService
     {
-        UserDTO GetUserInfo(int userId);
-        IEnumerable<ExerciseDTO> GetUserExercises(int userId);
-        IEnumerable<WorkoutDTO> GetUserWorkouts(int userId);
+        WorkoutTemplateDTO GetWorkoutTemplate(int workoutTemplateId);
+
+        WorkoutTemplateDTO GetUserWorkoutTemplate(int userId, int workoutTemplateId);
         IEnumerable<WorkoutTemplateDTO> GetUserWorkoutTemplates(int userId);
     }
 }

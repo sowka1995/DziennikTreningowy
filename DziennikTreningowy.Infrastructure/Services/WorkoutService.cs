@@ -1,34 +1,40 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using DziennikTreningowy.Core.DTO;
 using DziennikTreningowy.Core.Interfaces;
 using DziennikTreningowy.Core.Models;
+using System.Linq;
+using System.Collections.Generic;
 
-namespace DziennikTreningowy.Infrastructure.Services.User
+namespace DziennikTreningowy.Infrastructure.Services
 {
-    public class UserService : IUserService
+    public class WorkoutService : IWorkoutService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IWorkoutRepository _workoutRepository;
         private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, IMapper mapper)
+        public WorkoutService(
+            IWorkoutRepository workoutRepository,
+            IUserRepository userRepository,
+            IMapper mapper)
         {
+            _workoutRepository = workoutRepository;
             _userRepository = userRepository;
             _mapper = mapper;
         }
 
-        public IEnumerable<ExerciseDTO> GetUserExercises(int userId)
+
+        public WorkoutDTO GetWorkout(int workoutId)
         {
-            var user = _userRepository.Get(userId);
-            var exercises = user.UserExercises.Select(x => x.Exercise);
-            return _mapper.Map<IEnumerable<ExerciseDTO>>(exercises);
+            var workout = _workoutRepository.Get(workoutId);
+            return MapWorkoutDTO(workout);
         }
 
-        public UserDTO GetUserInfo(int userId)
+        public WorkoutDTO GetUserWorkout(int userId, int workoutId)
         {
             var user = _userRepository.Get(userId);
-            return _mapper.Map<UserDTO>(user);
+            var workout = user.UserWorkouts.FirstOrDefault(x => x.WorkoutId == workoutId);
+            return MapWorkoutDTO(workout);
         }
 
         public IEnumerable<WorkoutDTO> GetUserWorkouts(int userId)
@@ -44,21 +50,6 @@ namespace DziennikTreningowy.Infrastructure.Services.User
             }
 
             return workoutsDTO;
-        }
-
-        public IEnumerable<WorkoutTemplateDTO> GetUserWorkoutTemplates(int userId)
-        {
-            var user = _userRepository.Get(userId);
-            var templates = user.WorkoutTemplates;
-            return _mapper.Map<IEnumerable<WorkoutTemplateDTO>>(templates);
-        }
-
-        public WorkoutDTO GetUserWorkout(int userId, int workoutId)
-        {
-            var user = _userRepository.Get(userId);
-            var workout = user.UserWorkouts.First(x => x.WorkoutId == workoutId);
-
-            return MapWorkoutDTO(workout);
         }
 
         private WorkoutDTO MapWorkoutDTO(Workout workout)

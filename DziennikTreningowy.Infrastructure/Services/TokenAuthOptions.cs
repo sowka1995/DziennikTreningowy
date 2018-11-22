@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System;
 
-namespace DziennikTreningowy.Infrastructure.Services.Auth
+namespace DziennikTreningowy.Infrastructure.Services
 {
     public class TokenAuthOptions
     {

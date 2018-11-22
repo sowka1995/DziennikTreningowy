@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DziennikTreningowy.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/authorization")]
     [ApiController]
     public class AuthorizationController : ControllerBase
     {
@@ -33,7 +33,7 @@ namespace DziennikTreningowy.Controllers
         /// <response code="400">Logowanie nie powiodło się - niepoprawne dane logowania</response>
         /// <response code="403">Konto użytkownika jest zablokowane</response>
         /// <response code="500">Wewnętrzny błąd serwera</response>
-        [HttpPost("Login"), AllowAnonymous]
+        [HttpPost, Route("login"), AllowAnonymous]
         public async Task<IActionResult> LoginUserAsync([Required] UserLoginDTO userLoginDto)
         {
             var result = await _signInManager.PasswordSignInAsync(userLoginDto.Username, userLoginDto.Password, false, false);
